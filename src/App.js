@@ -1,9 +1,12 @@
 import './App.css';
+import AddNote from './Components/AddNote';
+import ShowNotes from './Components/ShowNotes';
 
 function App() {
   return (
     <div className="App">
-      <h1>Vaibhav</h1>
+      <AddNote />
+      <ShowNotes />
     </div>
   );
 }
