@@ -6,9 +6,11 @@ const ShowNotes = () => {
 
     const dispatch = useDispatch();
     const list = useSelector((state) => state.NoteReducers.list)
+    console.log("list",list);
 
     return (
         <div>
+            {console.log(localStorage)}
             {list.length === 0
                 ?
                 <div className="mt-4">
