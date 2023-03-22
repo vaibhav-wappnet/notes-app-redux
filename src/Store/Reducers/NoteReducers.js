@@ -4,8 +4,12 @@ const initialData = {
 
 const NoteReducers = (state = initialData, action) => {
 
-    const { id, data } = action.payload || [];
+    const { id, data } = action.payload || {};
 
+    console.log("id",id)
+    console.log("data",data)
+
+    // console.log(list);
     switch (action.type) {
         case "ADD_NOTE":
             return {
@@ -25,6 +29,12 @@ const NoteReducers = (state = initialData, action) => {
             return {
                 ...state,
                 list: newList
+            }
+
+        case "DELETE_ALL_NOTE":
+            const deletedAll = localStorage.clear()
+            return {
+                list: deletedAll
             }
         default: return state;
     }

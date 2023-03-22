@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from "react-redux";
 
 import * as Actions from "../Store/Actions/index"
@@ -7,6 +7,15 @@ const AddNote = () => {
 
 	const [input, setInput] = useState('');
 	const dispatch = useDispatch();
+	// const [count, setCount] = useState(0);
+	// useEffect(() => {
+	// 	const clickHandler = () => {
+	// 		setCount(count + 1)
+	// 	}
+	// }, [count])
+
+	// let noteId = 0;
+	// console.log("dddd", noteId)
 
 	return (
 		<div>
@@ -29,8 +38,23 @@ const AddNote = () => {
 								alert("Enter something to add it to Notes")
 								:
 								dispatch(Actions.AddNote(input), setInput(''))
+							// console.log(localStorage);
 						}}
-						className="p-2 m-2 text-white font-semibold rounded-md bg-blue-600 transition-all hover:shadow-xl">Add Note</button>
+						className="p-2 m-2 capitalize text-white font-semibold rounded-md bg-blue-600 transition-all hover:shadow-xl">
+						add note
+					</button>
+					<button
+						// onClick={() => {
+						// 	localStorage === null
+						// 	?
+						// 	alert("List Already Empty kya hi delete karoge bhai")
+						// 	:
+						// 	localStorage.clear()
+						// 	console.log(localStorage);
+						// }}
+						className="del-all p-2 capitalize text-white font-semibold rounded-md bg-red-600 transition-all hover:shadow-xl">
+						delete all notes
+					</button>
 				</div>
 			</div>
 		</div>
