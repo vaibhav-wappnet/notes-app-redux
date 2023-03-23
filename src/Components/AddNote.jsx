@@ -43,8 +43,7 @@ const AddNote = () => {
 								?
 								alert("List Already Empty kya hi delete karoge bhai")
 								:
-								dispatch(Actions.DeleteAllNote(list),localStorage.clear())
-							console.log(localStorage);
+								dispatch(Actions.DeleteAllNote(list), localStorage.clear())
 						}}
 						className="del-all p-2 capitalize text-white font-semibold rounded-md bg-red-600 transition-all hover:shadow-xl">
 						delete all notes
