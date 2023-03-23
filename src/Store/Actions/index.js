@@ -1,5 +1,5 @@
 
-export const AddNote = (data) => {
+export const AddNote = (data, id) => {
 
     // const usedIds = new Set();
 
@@ -18,7 +18,7 @@ export const AddNote = (data) => {
     return {
         type: "ADD_NOTE",
         payload: {
-            id: 0,
+            id: id,
             data: data
         }
     }

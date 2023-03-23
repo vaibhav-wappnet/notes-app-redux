@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 
 import * as Actions from "../Store/Actions/index"
 
 const AddNote = () => {
 
+	// console.log(localStorage);
 	const [input, setInput] = useState('');
 	const dispatch = useDispatch();
-	// const [count, setCount] = useState(0);
-	// useEffect(() => {
-	// 	const clickHandler = () => {
-	// 		setCount(count + 1)
-	// 	}
-	// }, [count])
-
-	// let noteId = 0;
-	// console.log("dddd", noteId)
-
+	const [count, setCount] = useState(0);
 	return (
 		<div>
 			<header className="my-3 text-2xl font-semibold">
@@ -37,7 +29,7 @@ const AddNote = () => {
 								?
 								alert("Enter something to add it to Notes")
 								:
-								dispatch(Actions.AddNote(input), setInput(''))
+								dispatch(Actions.AddNote(input, count + 1), setInput(''), setCount(0))
 							// console.log(localStorage);
 						}}
 						className="p-2 m-2 capitalize text-white font-semibold rounded-md bg-blue-600 transition-all hover:shadow-xl">

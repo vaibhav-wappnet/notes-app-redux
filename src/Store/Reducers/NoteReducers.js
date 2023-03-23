@@ -1,25 +1,30 @@
 const initialData = {
     list: [],
+    nextNoteId: 1
 }
 
 const NoteReducers = (state = initialData, action) => {
 
     const { id, data } = action.payload || {};
 
-    console.log("id",id)
-    console.log("data",data)
+    console.log("list: ", state.list);
 
-    // console.log(list);
     switch (action.type) {
         case "ADD_NOTE":
+            const newNote = { id: state.nextNoteId + 1, ...action.payload };
+            const existingItem = state.list.find(item => item.id === newNote.id);
+            if (existingItem) {
+                let newId = state.nextNoteId + 1;
+                while (state.list.some(item => item.id === newId)) {
+                    newId++
+                }
+                newNote.id = newId;
+            }
             return {
                 ...state,
                 list: [
                     ...state.list,
-                    {
-                        id: id,
-                        data: data
-                    }
+                    newNote
                 ]
             }
         case "DELETE_NOTE":
@@ -31,11 +36,11 @@ const NoteReducers = (state = initialData, action) => {
                 list: newList
             }
 
-        case "DELETE_ALL_NOTE":
-            const deletedAll = localStorage.clear()
-            return {
-                list: deletedAll
-            }
+        // case "DELETE_ALL_NOTE":
+        //     return {
+        //         ...state,
+        //         list: []
+        //     }
         default: return state;
     }
 }
