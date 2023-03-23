@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as Actions from "../Store/Actions/index"
 
@@ -8,6 +8,8 @@ const AddNote = () => {
 	// console.log(localStorage);
 	const [input, setInput] = useState('');
 	const dispatch = useDispatch();
+	const list = useSelector((state) => state.NoteReducers.list)
+
 	const [count, setCount] = useState(0);
 	return (
 		<div>
@@ -36,14 +38,14 @@ const AddNote = () => {
 						add note
 					</button>
 					<button
-						// onClick={() => {
-						// 	localStorage === null
-						// 	?
-						// 	alert("List Already Empty kya hi delete karoge bhai")
-						// 	:
-						// 	localStorage.clear()
-						// 	console.log(localStorage);
-						// }}
+						onClick={() => {
+							list.length === 0
+								?
+								alert("List Already Empty kya hi delete karoge bhai")
+								:
+								dispatch(Actions.DeleteAllNote(list),localStorage.clear())
+							console.log(localStorage);
+						}}
 						className="del-all p-2 capitalize text-white font-semibold rounded-md bg-red-600 transition-all hover:shadow-xl">
 						delete all notes
 					</button>

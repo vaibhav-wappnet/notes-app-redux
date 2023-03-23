@@ -36,11 +36,11 @@ const NoteReducers = (state = initialData, action) => {
                 list: newList
             }
 
-        // case "DELETE_ALL_NOTE":
-        //     return {
-        //         ...state,
-        //         list: []
-        //     }
+        case "DELETE_ALL_NOTE":
+            return {
+                ...state,
+                list: []
+            }
         default: return state;
     }
 }
